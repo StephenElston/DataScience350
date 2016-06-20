@@ -19,7 +19,11 @@ read.auto <- function(path = 'SET-YOUR-PATH-HERE'){
                          stringsAsFactors = FALSE)
   
   ## Coerce some character columns to numeric
-  numcols <- c('price', 'bore', 'stroke', 'horsepower', 'peak.rpm')
+  numcols <- c('price', 'bore', 'stroke', 'horsepower', 'peak.rpm',
+               'highway.mpg', 'city.mpg', 'compression.ratio',
+               'engine.size', 'curb.weight', 'height', 'width',
+               'length', 'wheel.base', 'normalized.losses',
+               'symboling')
   auto.price[, numcols] <- lapply(auto.price[, numcols], as.numeric)
   
   auto.price
