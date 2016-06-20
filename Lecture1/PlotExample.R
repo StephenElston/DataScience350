@@ -1,3 +1,17 @@
+##--------------------------------------------
+##
+## Exploring Data in R (lecture 1)
+##
+## Class: PCE Data Science 350
+##
+## Contains examples of:
+##
+## - Visualization and data exploration using ggplot2
+##   and auto price data.
+##
+##--------------------------------------------
+
+##  Read the csv file into a data frame
 read.auto <- function(path = 'SET-YOUR-PATH-HERE'){
   ## Function to read the csv file
   filePath <- file.path(path, 'Automobile price data _Raw_.csv')
