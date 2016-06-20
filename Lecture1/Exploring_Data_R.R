@@ -22,8 +22,18 @@ bern_var = p*(1-p)
 print(paste('Brenoulli variance = ', as.character(bern_var), '   Sample varience = ', as.character(bern_sample_var)))
 hist(bern_samples)
 
+## Look at four 'fair' coin tosses 
+p = 0.5
+n = c(10, 10, 10, 10)
+berns = lapply(n, function(x) rbinom(x, 1, p)) # Compute random draws
+par(mfrow = c(2,2))
+lapply(berns, function(x) hist(x, main='Frequency for 10 fair coin flips'))
+par(mfrow = c(1,1))
+               
+               
 
 # Binomial
+n = 1000
 N = c(5, 25, 75) # parameter list
 binom_samples = lapply(N, function(x) rbinom(n, x, p))  # Compute list of random draws
 
@@ -139,8 +149,10 @@ norms = lapply(n, function(x) rnorm(x))
 
 norm.hist = function(x, n) { 
   xbar = as.character(round(mean(x), digits = 3))
+  varbar = as.character(round(var(x), digits = 3))
   title = paste('Histogram of std Normal with', as.character(n), 
-                'draws \n', 'sample mean =', xbar)
+                'draws \n', 'sample mean =', xbar,
+                '  sample var =', varbar)
   breaks = seq(min(x), max(x), length.out = 61)
   hist(x, breaks = breaks, main = title) 
 }
