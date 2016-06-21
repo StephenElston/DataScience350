@@ -39,5 +39,6 @@ airport.by.airline
 
 
 ## Look at the full table with delay added
-Airlines = Airlines %>% mutate(PercentDelay = 100 * sum(Delayed)/(sum(OnTime) + sum(Delayed)))
+Airlines = Airlines %>% group_by(AirportCode, Airline) %>%
+  mutate(PercentDelay = 100 * sum(Delayed)/(sum(OnTime) + sum(Delayed)))
 Airlines

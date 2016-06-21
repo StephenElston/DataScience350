@@ -126,7 +126,7 @@ lapply(Auto.Price, function(x) any(is.na(x)))
 numcols <- c('price', 'bore', 'stroke', 'horsepower', 'peak.rpm',
              'city.mpg', 'compression.ratio', 'engine.size', 
              'curb.weight', 'length')
-cov.auto = cov(Auto.Price[numcols])
+cov.auto = cov(Auto.Price[numcols], na.rm = TRUE)
 cov.auto
 
 
