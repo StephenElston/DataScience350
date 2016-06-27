@@ -75,4 +75,14 @@ dist.profit <- function(reps = 1000, n = 100, sd = 20, bake = 120){
 }
 
 
+## How long to simulations take?
+system.time(
+  dist.profit()
+  )
 
+## Or, get a more detailed, but slower much slower, view
+library(microbenchmark)
+microbenchmark(
+    dist.profit(),
+    times = 20
+  )
