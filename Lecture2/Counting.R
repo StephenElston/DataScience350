@@ -49,20 +49,3 @@ fractions(doubles/nrow(twoDice))
 sumProb = fractions(table(twoDice$sum)/nrow(twoDice)) # type ?fractions for detail
 barplot(sumProb)
 
-
-
-system.time(sapply(1:1000, function(x){
-  five_cards = sample(1:nrow(deck),5)
-  return(length(unique(deck$suits[five_cards]))==1)
-}))
-# 0.08 on my system for 1000, so 1 million would take ~ 1000*0.08 = 80 seconds,
-#    but 100K would take 8 seconds.
-
-# For better system times, use the package 'microbenchmark':
-# Careful! this essentially does system.time(rep(1000, f() ))
-library(microbenchmark)
-microbenchmark(sapply(1:1, function(x){
-  five_cards = sample(1:nrow(deck),5)
-  return(length(unique(deck$suits[five_cards]))==1)
-}))
-
