@@ -86,3 +86,17 @@ microbenchmark(
     dist.profit(),
     times = 20
   )
+
+
+## Test a function
+test.demand <- function(){
+  set.seed(2345)
+  res <- c("white", "white", "wheat", "white", "white", "white", 
+           "wheat", "multi", "white", "wheat", "white", "white", 
+           "white", "white", "white", "white", "wheat", "white",
+           "wheat", "white")
+  demand  <- sim.demand(20)
+  if(!any(demand != res)) print('sim.demand funciton works!')
+  else print('ERROR: sim.demand failed')
+}
+
