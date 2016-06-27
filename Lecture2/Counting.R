@@ -18,12 +18,20 @@ library(MASS) # Contains the function 'fractions()',
 breads = c('white', 'wheat', 'italian', 'sevengrain')
 meats = c('ham', 'turkey', 'chicken', 'pastrami', 'meatballs')
 toppings = c('mustard', 'mayo', 'salt_pepper', 'oil_vinegar')
+cheese = c('swiss', 'american', 'chedar')
 
 sandwiches = expand.grid(breads,
                          meats,
                          toppings)
 nrow(sandwiches)
 sandwiches
+
+sandwiches2 = expand.grid(breads,
+                         meats,
+                         cheese,
+                         toppings)
+nrow(sandwiches2)
+sandwiches2
 
 
 ##-----Two Dice Example ------
