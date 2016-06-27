@@ -28,9 +28,9 @@ sqrt(-1)
 log(-1)
 asin(2)
 NaN > 1 
-sum(c(1,2,NaN))
 
 ## Note that na.rm is quite general, NaN is not a type of NA
+sum(c(1,2,NaN))
 sum(c(1,2,NaN), na.rm=TRUE)  
 
 #NAs:
@@ -42,6 +42,7 @@ sum(c(1,2,NA), na.rm=TRUE)
 
 # NULLs:
 t = data.frame('a'=1:4, 'b'=runif(4))
+t
 t$c
 t$a = NULL
 t
@@ -49,12 +50,11 @@ s = c(1,2,NULL)
 s
 
 
-library(Amelia)
-
 # To illustrate the helpfulness of Multiple Imputation,
 #   we will test this out on a contrived data set
-n = 1000
+library(Amelia)
 
+n = 1000
 full_data = data.frame('A'=runif(n),
                        'B'=rnorm(n),
                        'C'=rpois(n, 5))
