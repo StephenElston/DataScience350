@@ -10,14 +10,13 @@ getwd()
 
 ##-----Getting/Storing Data-----
 
-# csv files
-?read.csv # Note the option stringsAsFactors = FALSE
-
 # txt files
 ?read.table
 
+# csv files. Is wraper on read.table
+?read.csv # Note the option stringsAsFactors = FALSE
+
 # web/html
-# See previous class weather_retrieval.R from previous class
 ?readLines
 
 ## Example: get a data frame
