@@ -9,7 +9,7 @@
 ## Shop has 3 types of bread.
 ## Selling a sandwich = $1 profit
 ## Out of bread, customer leaves = $0 profit
-## Each wasted bread = -$0.10 profit
+## Each wasted bread = -$0.20 profit
 ##
 ## WARNING. This code has a known bug. It will crash
 ## for certain combinations of simulation arguments. 
