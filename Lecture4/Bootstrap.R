@@ -67,6 +67,13 @@ plot.diff(two.boot.mean$t)
 ## Is the bootstrapped distribution Normal?
 qqnorm(two.boot.mean$t, main = 'Quantiles of standard Normal vs. bookstrapped mean')
 
+## Bootstrap the difference in medians of sons and fathers
+two.boot.median = two.boot(male$childHeight, male$father, median, R = 100000)
+plot.diff(two.boot.median$t)
+
+## Is the bootstrapped distribution Normal?
+qqnorm(two.boot.median$t, main = 'Quantiles of standard Normal vs. bookstrapped median')
+
 
 ## -------- Try the Jackknife ------------------
 ##
