@@ -19,11 +19,10 @@ auto.price = read.auto(path = 'C:/Users/Steve/GIT/DataScience350/Lecture1')
 ## Create a plot function
 plot.auto = function(col, df = auto.price, ycol = 'price'){
   require(ggplot2)
-  p = ggplot(df, aes_string(col, ycol)) +
+  ggplot(df, aes_string(col, ycol)) +
     geom_point(aes(size = 2, shape = factor(aspiration), 
                    color = factor(fuel.type)), alpha = 0.3) +
     ggtitle(paste(ycol, 'verses', col))
-  print(p)
 }
 
 ## Plot a few features with a strong relationship to auto price
@@ -47,11 +46,10 @@ auto.price[auto.price$outliers == TRUE, ]
 ## plot the result
 plot.auto.outlier = function(col, df = auto.price, ycol = 'price'){
   require(ggplot2)
-  p = ggplot(df, aes_string(col, ycol)) +
+  ggplot(df, aes_string(col, ycol)) +
     geom_point(aes(size = factor(outliers), shape = factor(aspiration), 
                    color = factor(fuel.type)), alpha = 0.3) +
     ggtitle(paste(ycol, 'verses', col, 'with outliers highlighted'))
-  print(p)
 }
 lapply(plot.cols, plot.auto.outlier, ycol = 'lnprice')
 
