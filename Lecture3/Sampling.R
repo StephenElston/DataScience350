@@ -16,7 +16,7 @@ data %>% group_by(group) %>% summarise(n.group = n(), mean.index = mean(var1))
 
 ##----Bernoulli Sampling-----
 p = 0.1
-bernoulli_sample = data[runif(200)<p,] # Yay for R vectorization
+bernoulli_sample = data[runif(200) < p,] # Yay for R vectorization
 bernoulli_sample %>% group_by(group) %>% summarise(n.group = n(), mean.index = mean(var1))
 
 ##----Simple Random Sample-----
@@ -65,7 +65,7 @@ p_six = 1/6
 xs = c(10, 100, 1000, 10000, 100000)
 sizes = c(60, 600, 6000, 60000, 600000)
 # roll the dice and find p(x)
-Map(function(x,s) dbinom(x = x, size = s, prob=p_six), xs, sizes)
+unlist(Map(function(x,s) dbinom(x = x, size = s, prob=p_six), xs, sizes))
 
 
 # Probability of within 5%?
