@@ -17,7 +17,10 @@ df = data.frame('group'=c(rep(1,50),
                           rnorm(40, mean=0, sd=1)))
 df$group = factor(df$group) # Make sure your groups are a factor (for further analysis below)
 
-boxplot(df$val ~ df$group)
+## Boxplots of the groups
+boxplot(df$val ~ df$group, main = 'Boxplot by group', xlab = 'Group')
+
+## Compute, print the summary and plot the ANOVA model
 df_aov = aov(val ~ group, data = df)
 summary(df_aov)
 plot(df_aov)
@@ -51,7 +54,10 @@ df = data.frame('group'=c(rep(1,500),
                           rnorm(400, mean=0, sd=1)))
 df$group = factor(df$group) # Make sure your groups are a factor (for further analysis below)
 
-boxplot(df$val ~ df$group)
+## Boxplots of the groups
+boxplot(df$val ~ df$group, main = 'Boxplot by group', xlab = 'Group')
+
+## Compute, print the summary and plot the ANOVA model
 df_aov = aov(val ~ group, data = df)
 summary(df_aov)
 plot(df_aov)
@@ -73,7 +79,10 @@ df = data.frame('group'=c(rep(1,50),
                           rnorm(40, mean=0, sd=1)))
 df$group = factor(df$group) # Make sure your groups are a factor (for further analysis below)
 
-boxplot(df$val ~ df$group)
+## Boxplots of the groups
+boxplot(df$val ~ df$group, main = 'Boxplot by group', xlab = 'Group')
+
+## Compute, print the summary and plot the ANOVA model
 df_aov = aov(val ~ group, data = df)
 summary(df_aov)
 plot(df_aov)
