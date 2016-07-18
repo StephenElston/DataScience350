@@ -111,6 +111,9 @@ diet = data.frame(Loss = c(c(8,9,6,7,3),
                             rep('Control', 5)))
 diet$group = factor(diet$group) # Make the group column a factor
 str(diet)
+require(dplyr)
+diet %>% group_by(group) %>% 
+  summarise(subjects = n(), mean = mean(Loss), median = median(Loss), sd = sd(Loss))
 
 ## Visualize the data
 require(ggplot2)
