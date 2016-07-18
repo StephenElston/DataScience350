@@ -92,3 +92,38 @@ tukey_anova = TukeyHSD(df_aov)  # Tukey's Range test:
 tukey_anova
 plot(tukey_anova)
 
+
+##------- Simple Applicaiton -------------
+##
+## 20 subjects are divided into three diet groups 
+## plus a control group (no diet). There are 5 subjects
+## in each group. Weight loss of each subject is recorded
+## in units of pounds lossed. Are any of these diets 
+## effective?
+##
+diet = data.frame(Loss = c(c(8,9,6,7,3),
+                           c(2,4,3,5,1),
+                           c(3,5,4,2,3),
+                           c(2,2,-1,0,3)),
+                  group = c(rep('LowCalorie', 5),
+                            rep('LowFat', 5),
+                            rep('LowCarbohydrate', 5),
+                            rep('Control', 5)))
+diet$group = factor(diet$group) # Make the group column a factor
+str(diet)
+
+## Visualize the data
+require(ggplot2)
+ggplot(diet, aes(group, Loss)) + geom_point(size = 5, alpha = 0.3) +
+  ggtitle('Weight loss by diet for 20 subjects') +
+  xlab('Diet') + ylab('Weight loss')
+
+## Create and summarize an ANOVA model
+diet.anova = aov(Loss ~ group, data = diet)
+summary(diet.anova)
+plot(diet.anova)
+
+## Create and summarize a Tukey Honest Significant Difference model
+tukey.diet = TukeyHSD(diet.anova)  # Tukey's Range test:
+tukey.diet
+plot(tukey.diet)
