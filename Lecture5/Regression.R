@@ -155,6 +155,4 @@ summary(lm.males.2)
 plot(lm.males.2)
  
 
-# lm.booted.2 = lm.boot(lm.males.2, R = 10000)
-
 
