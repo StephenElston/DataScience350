@@ -63,7 +63,7 @@ plot.reg <- function(df){
   SST <- sum((df$y - yBar)^2)
   SSR <- sum((df$score - yBar)^2)
   n = nrow(df)
-  adjR2  <- 1.0 - (SSE/SST) * ((n - 1)/(n - 2))
+  adjR2  <- 1.0 - (SSE/SST) * ((n - 1)/(n - 3))
   print(paste('Sum of residuals = ', as.character(sum(df$resids))))
   print('SSE        SST         SSR')
   print(paste(as.character(signif(SSE, 5)), '  ',
