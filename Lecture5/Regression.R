@@ -40,13 +40,17 @@ plot.reg <- function(df){
   df$score <- predict(mod)
   df$resids <- df$y - df$score
   
+  ## compute the known 
+  df$x.known = seq(0, max(df$x), length.out = nrow(df))
+  
   p1 <- ggplot(df, aes(x, y)) + 
     geom_point(size = 2) +
-    geom_line(aes(x, score, color = 'Red')) + 
+    geom_line(aes(x, score, color = 'Red')) +
+    geom_line(aes(x.known, x.known, color = 'DarkBlue')) + 
     ggtitle('X vs. Y with regression')
   
   p2 <- ggplot(df, aes(resids)) +
-    geom_histogram() +
+    geom_histogram() + 
     ggtitle('Distribution of residuals')
   
   grid.arrange(p1, p2, nrow = 2)
@@ -91,14 +95,21 @@ demo.outlier <- function(){
 ##----- Regression with R -------------
 ##----- Gaulton's family data `1883 ---
 ##
-x require(HistData)
+require(HistData)
 names(GaltonFamilies)
 
+## Subset the data
 males = GaltonFamilies[GaltonFamilies$gender == 'male',]
 
+## Plot the data and correlations
 pairs(~ father + mother + childHeight, 
       data = males)
+cols = c('father', 'mother', 'childHeight')
+cors = cor(males[, cols], method = 'pearson')
+require(corrplot)
+corrplot.mixed(cors, upper = "ellipse")
 
+## Make a detailed scatter plot
 require(ggplot2)
 p1 = ggplot(males, aes(father, childHeight)) + 
   geom_point(size = 2, alpha = 0.3)
@@ -108,27 +119,36 @@ p1
 lm.males.mean = lm(childHeight ~ 1, data = males)
 summary(lm.males.mean)
 
-males$predicted = predict(lm.males.mean, newdata = males)
-p3 = p1 + geom_line(aes(father, predicted))
-p3
+## Examine the fit
+males$predicted.mean = predict(lm.males.mean, newdata = males)
+ggplot(males, aes(father, childHeight)) + 
+  geom_point(size = 2, alpha = 0.3) +
+  geom_line(aes(father,predicted.mean), color = 'red')
+
+## Examine the residuals
 res = lm.males.mean$residuals
+par(mfrow = c(1,2))
 qqnorm(res)
 breaks = seq(max(res), min(res), length.out = 31)
 hist(res, breaks = breaks)
+par(mfrow = c(1,1))
+
 
 ## ---- Second model with intercept and one independent variable
 lm.males = lm(childHeight ~ father, data = males)
 summary(lm.males)
 
 xvals = seq(max(males$father), min(males$father), length.out = 101)
-males$predicted = predict(lm.males, newdata = males)
-p2 = p1 + geom_line(aes(father, predicted))
-p2
+males$predicted.1 = predict(lm.males, newdata = males)
+ggplot(males, aes(father, childHeight)) + 
+  geom_point(size = 2, alpha = 0.3) + 
+  geom_line(aes(father, predicted.1), color = 'red') +
+  geom_line(aes(father,predicted.mean), color = 'DarkBlue', lty = 4, size = 1)
 
-#require(simpleboot)
-#lm.booted = lm.boot(lm.males, R = 10000)
+plot(lm.males) # Diagnostic plots
 
-## Third model with two independent variables
+
+## --- Third model with two independent variables
 lm.males.2 = lm(childHeight ~ father + mother, data = males)
 summary(lm.males.2)
 
