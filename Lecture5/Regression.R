@@ -10,7 +10,7 @@ sim.reg.data <- function(x1, y1, x2, y2, n, sd){
   w <- rnorm(n, mean = 0, sd = sd)
   data.frame(
     x = seq(from = x1, to = x2, length.out = n),
-    y = (seq(from = x1, to = x2, length.out = n) + w)
+    y = (seq(from = y1, to = y2, length.out = n) + w)
   )
 }
 
@@ -19,7 +19,7 @@ sim.reg.outlier <- function(x1, y1, x2, y2, n, sd, ox, oy){
   w <- rnorm(n, mean = 0, sd = sd)
   df <- data.frame(
     x = c(seq(from = x1, to = x2, length.out = n), ox),
-    y = c((seq(from = x1, to = x2, length.out = n) + w), oy)
+    y = c((seq(from = y1, to = y2, length.out = n) + w), oy)
   )
   df[order(df$x),]
 }
