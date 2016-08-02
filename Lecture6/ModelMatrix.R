@@ -17,5 +17,6 @@ head(mod.mat)  # Note the use of contrast to intercept
 mod.mat = model.matrix(lnprice ~ 0 + drive.wheels, data = auto.price)
 head(mod.mat)
 
-
+mod.mat = model.matrix(lnprice ~ 0 + fuel.type +drive.wheels + aspiration + engine.size, data = auto.price)
+head(mod.mat)
 

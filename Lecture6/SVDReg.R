@@ -16,7 +16,7 @@ R = males.ext[, c('father', 'mother',
                   'motherfather')]
 RSVD = svd(R) # The SVD 
 
-RSVD$v %*% t(RSVD$v)  # Is nearly diagonal
+RSVD$v %*% t(RSVD$v)  # Is nearly orthogonal
 
 # The diagonal matrix of singular values
 d = diag(RSVD$d) 
