@@ -58,7 +58,7 @@ dist.ts(ranWalk, col = 'random walk')
 plot.acf(ranWalk, col = 'random walk', is.df = F)
 
 
-## Investigate time series properties of 
+## ---- Investigate time series properties of 
 ## trend + white noise
 ts.trend = function(n, slope = 0.01, mean = 0.0, sd = 1.0, start = 1990, freq = 12){
   temp = seq(0, slope * n, length.out = n) + 
@@ -101,7 +101,7 @@ plot.acf(diff.walk[,3], col = 'difference of random walk ', is.df = F)
 
 
 
-## Investigate time series properties of 
+## --- Investigate time series properties of 
 ## trend + white noise + seasonal
 ts.season = function(n, slope = 0.01, mean = 0.0, sd = 1.0, start = 1990, freq = 12){
    temp = seq(0, slope * n, length.out = n) + 
@@ -135,21 +135,21 @@ ts.model = function(ts, col = 'remainder', order = c(0,0,1)){
   mod
 }
 
-## AR(1) process
+## --- AR(1) process
 arMod = arma.sim()
 plot(arMod, main = 'Plot of AR(1) model time series')
 plot.acf(arMod, col = 'AR(1) model', is.df = F)
 mod.est = ts.model(arMod, col = 'AR(1) process', order = c(1,0,0))
 plot.acf(mod.est$resid[-1], col = 'AR(1) estimate', is.df = F)
 
-## MA(1) process
+## --- MA(1) process
 arMod = arma.sim(ar = c(0.001), ma = (0.9))
 plot(arMod, main = 'Plot of MA(1) model time series')
 plot.acf(arMod, col = 'MA(1) model', is.df = F)
 mod.est = ts.model(arMod, col = 'MA(1) process', order = c(0,0,1))
 plot.acf(mod.est$resid[-1], col = 'MA(1) estimate', is.df = F)
 
-## ARMA(1,1) process
+## ---- ARMA(1,1) process
 arMod = arma.sim(ar = c(0.9), ma = (0.9))
 plot(arMod, main = 'Plot of ARMA(1,1) model time series')
 plot.acf(arMod, col = 'ARMA(1,1) model', is.df = F)
@@ -167,7 +167,7 @@ walk.est = ts.model(diff.walk[,3], col = 'ARMA(1,1) process', order = c(1,0,1))
 plot.acf(walk.est$resid[-1], col = 'ARMA(1,1) estimate', is.df = F)
 
 
-## ARIMA modeling of trend series
+## --- ARIMA modeling of trend series
 arima.est = ts.model(trend, col = 'ARIMA process model', order = c(1,1,1))
 plot.acf(arima.est$resid[-1], col = 'ARIMA model result', is.df = F)
 
@@ -261,7 +261,7 @@ temp = ts.sim(lnbeer.arima, beer.decomp[,'remainder'])
 ## --- Forecast beer production
 library(forecast)
 fit.beer = auto.arima(aus.ts[, 'lnbeer.ts'], max.p=3, max.q=3,
-                       max.P=2, max.Q=2, max.order=5, max.d=2, max.D=2,
+                       max.P=2, max.Q=2, max.order=5, max.d=2, max.D=1,
                        start.p=0, start.q=0, start.P=0, start.Q=0)
 summary(fit.beer)
 
