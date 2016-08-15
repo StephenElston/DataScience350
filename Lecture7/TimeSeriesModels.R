@@ -87,17 +87,17 @@ plot.acf(temp[,3], is.df = FALSE)
 ## Use a first order difference series to 
 ## remove the trend
 ts.diff <- function(ts, lag = 1){
-  diff(temp, lag = lag)
+  diff(ts, lag = lag)
 }
 diff.out = ts.diff(trend, lag = 1)
 plot(diff.out, main = 'Difference series of trend + white noise time series')
-plot.acf(diff.out[,3], col = 'difference of trend + white noise', is.df = F)
+plot.acf(diff.out, col = 'difference of trend + white noise', is.df = F)
 
 ## Take first order difference of random walk
 diff.walk = ts.diff(ranWalk, lag = 1)
 plot(diff.walk, main = 'Difference series of random walk time series')
-dist.ts(diff.walk[,'remainder'], col = 'random walk')
-plot.acf(diff.walk[,3], col = 'difference of random walk ', is.df = F)
+dist.ts(diff.walk, col = 'random walk')
+plot.acf(diff.walk, col = 'difference of random walk ', is.df = F)
 
 
 
@@ -157,19 +157,19 @@ mod.est = ts.model(arMod, col = 'ARMA(1,1) process', order = c(1,0,1))
 plot.acf(mod.est$resid[-1], col = 'ARMA(1,1) estimate', is.df = F)
 
 ## ARMA model of trend difference process
-plot.acf(diff.out[,3], col = 'difference of trend + white noise', is.df = F)
-diff.est = ts.model(diff.out[,3], col = 'ARMA(1,1) process', order = c(1,0,1))
+plot.acf(diff.out, col = 'difference of trend + white noise', is.df = F)
+diff.est = ts.model(diff.out, col = 'ARMA(1,1) process', order = c(1,0,1))
 plot.acf(diff.est$resid[-1], col = 'ARMA(1,1) estimate', is.df = F)
 
 ## ARMA model of the random walk difference process 
-plot.acf(diff.walk[,3], col = 'difference of random walk ', is.df = F)
-walk.est = ts.model(diff.walk[,3], col = 'ARMA(1,1) process', order = c(1,0,1))
+plot.acf(diff.walk, col = 'difference of random walk ', is.df = F)
+walk.est = ts.model(diff.walk, col = 'ARMA(1,1) process', order = c(1,0,1))
 plot.acf(walk.est$resid[-1], col = 'ARMA(1,1) estimate', is.df = F)
 
 
 ## --- ARIMA modeling of trend series
 arima.est = ts.model(trend, col = 'ARIMA process model', order = c(1,1,1))
-plot.acf(arima.est$resid[-1], col = 'ARIMA model result', is.df = F)
+plot.acf(arima.est$resid[-1], col = 'ARIMA model result', is.df = F)]
 
 ## ARIMA modeling of random walk with first order diff
 arima.walk = ts.model(ranWalk, col = 'ARIMA process model', order = c(0,1,0))
