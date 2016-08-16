@@ -55,12 +55,12 @@ plot.sing(mod.SVD$d)
 ## Set some singular values to 0 and create the inverse matrix
 thresh = 1
 d.th = sapply(mod.SVD$d, function(x) ifelse(x > thresh, 1/x, 0))
-d.th
+d.th # Check the values
+plot.sing(d.th) # Plot the values
 dInv = diag(d.th)
 
 ## Compute the pseudeo inverse
 pInv = mod.SVD$v %*% t(dInv) %*% t(mod.SVD$u[, 1:42])
-
 
 ## Find the model coeficients
 beta = pInv %*% auto.price$lnprice
@@ -75,11 +75,12 @@ plot(auto.price$lnprice, resid)
 sum(resid*resid)
 
 
-## ----- New thresh
+## ----- New threshold
 ## Set some singular values to 0 and create the inverse matrix
 thresh = 5
 d.th = sapply(mod.SVD$d, function(x) ifelse(x > thresh, 1/x, 0))
-d.th
+d.th # Check the values
+plot.sing(d.th) # Plot the values
 dInv = diag(d.th)
 
 ## Compute the pseudeo inverse
@@ -98,11 +99,12 @@ resid = auto.price$lnprice - pred
 plot(auto.price$lnprice, resid)
 sum(resid*resid)
 
-## ----- New thresh
+## ----- New threshold -------------
 ## Set some singular values to 0 and create the inverse matrix
 thresh = 0.2
 d.th = sapply(mod.SVD$d, function(x) ifelse(x > thresh, 1/x, 0))
-d.th
+d.th # Check the values
+plot.sing(d.th) # Plot the values
 dInv = diag(d.th)
 
 ## Compute the pseudeo inverse
