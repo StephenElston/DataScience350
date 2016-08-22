@@ -92,7 +92,7 @@ discint(cbind(s, pred.probs), 0.90)
 p <- seq(0, 1, by = 0.01)
 prior <- 1 / 101 + 0 * p
 
-## With 29 successes and 8 failures find posterior
+## With 20 successes and 12 failures find posterior
 library(LearnBayes)
 tries = c(20, 12)
 post <- pdisc(p, prior, tries)
@@ -158,7 +158,7 @@ current_val = likelihood(x_chain,y_chain)
 current_val
 
 # Standard deviation of how far out to propose:
-proposal_sd = 1
+proposal_sd = .1
 
 # Keep track of things:
 accept_count = 0

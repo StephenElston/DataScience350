@@ -53,7 +53,7 @@ plot.sing = function(u){
 plot.sing(mod.SVD$d)
 
 ## Set some singular values to 0 and create the inverse matrix
-thresh = 1
+thresh = 1.0
 d.th = sapply(mod.SVD$d, function(x) ifelse(x > thresh, 1/x, 0))
 d.th # Check the values
 plot.sing(d.th) # Plot the values
