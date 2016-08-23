@@ -188,13 +188,13 @@ samples <- coda.samples(jags.mod.reg,
                         c('a', 'b'),
                         1000)
 
+library(coda)
 plot(samples) # Plot the result
 summary(samples) # Summary statistics
 cumuplot(samples) # Cumulative mean for each chain
 gelman.plot(samples) # Gelman convergence plot
 
 ## Look at the autocorrelation of the chain
-library(coda)
 autocorr.diag(samples)
 autocorr.plot(samples)
 
