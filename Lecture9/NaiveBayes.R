@@ -44,7 +44,7 @@ table(pred, HouseVotes84$Class)
 ## ------ learning in naive Bayes ------
 ## Naive Bayes works well with small data sets
 for(i in c(3, 5, 9, 17)){
-  model <- naiveBayes(Class ~ ., data = HouseVotes84[, 2:i], laplace = 3)
+  model <- naiveBayes(Class ~ ., data = HouseVotes84[, 1:i], laplace = 3)
   pred <- predict(model, HouseVotes84[,2:i])
   print(table(pred, HouseVotes84$Class))
 }
