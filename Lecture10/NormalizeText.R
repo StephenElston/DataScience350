@@ -104,7 +104,7 @@ word.cdf(wf) # Plot cdf
 ##
 ## Use the porter stemmer in Snowball package
 ##
-require(SnowballC) ## For stemming words
+require(SnowballC) ## For Porter stemming words
 tweet.corpus <- tm_map(tweet.corpus, stemDocument)
 
 ## View the results
