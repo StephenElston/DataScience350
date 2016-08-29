@@ -22,7 +22,7 @@ tdm.tools = create_matrix(tweet.frame$tweets, language="english", removeNumbers=
 tweet.cont = create_container(tdm.tools,tweets$sentiment, trainSize = 1:12000, virgin=TRUE)
 
 ## Compute a logistic regresson model for sentiment classification
-tweet.glmnet <- train_model(tweet.cont,"GLMNET")
+tweet.glmnet <- train_model(tweet.cont, "GLMNET")
 
 ## Test classification
 tweet.class = classify_model(tweet.cont, tweet.glmnet)
