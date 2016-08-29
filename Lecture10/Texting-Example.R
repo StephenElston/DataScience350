@@ -37,7 +37,7 @@ prior.post = function(sample, prob = 0.10){
 
 par(mfrow = c(2,1))
 prior.sample <- rbeta(10000, beta.par[1], beta.par[2])
-prior.post(prior.sample)
+prior.post(prior.sample, prob = 0.8)
 print(paste('Mean of prior = ', as.character(mean(prior.sample))))
 beta.post.par <- beta.par + c(2 + 4 + 1, 18 + 16 + 19)
 post.sample <- rbeta(10000, beta.post.par[1], beta.post.par[2])
