@@ -16,9 +16,13 @@ writeLines(as.character(crude[[1]]))
 
 ## Compute the term document matrix
 crude.tdm = TermDocumentMatrix(crude, control = list(removePunctuation = TRUE,
-                                              stopwords = TRUE))
+                                                     tolower = TRUE,
+                                                     removePunctuation = TRUE,
+                                                     removeNumbers = TRUE,
+                                                     stopwords = TRUE,
+                                                     stemming = TRUE))
 
-## Have a look at the tdm
+## Have a look at the tdm 
 inspect(crude.tdm[202:205, 1:5])
 
 ## Which terms occur 10 times or more?
