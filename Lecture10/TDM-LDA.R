@@ -71,7 +71,7 @@ head(topicProbabilities)
 #Find relative importance of top 2 topics
 topic1ToTopic2 <- lapply(1:nrow(crude.dtm),function(x)
   sort(topicProbabilities[x,])[k]/sort(topicProbabilities[x,])[k-1])
-topic1ToTopic2
+unlist(topic1ToTopic2)
 
 #Find relative importance of second and third most important topics
 topic2ToTopic3 <- lapply(1:nrow(crude.dtm),function(x)

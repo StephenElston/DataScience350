@@ -19,7 +19,7 @@ tdm.tools = create_matrix(tweet.frame$tweets, language="english", removeNumbers=
                           toLower = FALSE)
 
 ## Create the a container for the tdm and label
-tweet.cont = create_container(tdm.tools,tweets$sentiment, trainSize = 1:12000, virgin=TRUE)
+tweet.cont = create_container(tdm.tools,tweets$sentiment, trainSize = 1:120000, virgin=TRUE)
 
 ## Compute a logistic regresson model for sentiment classification
 tweet.glmnet <- train_model(tweet.cont, "GLMNET")
@@ -41,13 +41,13 @@ create_precisionRecallSummary(tweet.cont, tweet.class)
 ##----------------------------------------------
 ## Compute TFIdf weighted tdm
 ## Compute a tdm
-tdm.tools = create_matrix(tweet.frame$tweets, language = "english", removeNumbers = FALSE,
+tdm.tools2 = create_matrix(tweet.frame$tweets, language = "english", removeNumbers = FALSE,
                           stemWords = FALSE, removeSparseTerms = .998, 
                           removeStopwords = FALSE, stripWhitespace = FALSE,
                           toLower = FALSE, weighting = tm::weightTfIdf)
 
 ## Create the a container for the TfIdf weighted tdm and label
-tweet.cont = create_container(tdm.tools,tweets$sentiment, trainSize = 1:12000, virgin=TRUE)
+tweet.cont = create_container(tdm.tools2,tweets$sentiment, trainSize = 1:120000, virgin=TRUE)
 
 
 ## Compute a logistic regresson model for sentiment classification
