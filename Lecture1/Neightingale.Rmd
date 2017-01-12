@@ -5,7 +5,7 @@ date: "Saturday, July 23, 2016"
 output: html_document
 ---
 
-# Floraance Nightingale: Data Scientist
+# Florance Nightingale: Data Scientist
 # Do Sanitation Officers Matter?
 
 ## Overview and summary
