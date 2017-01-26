@@ -117,6 +117,7 @@ par(mfrow = c(1,1))
 
 # The Normal Distribution
 # Try different parameters
+n = 100000
 n_params = list(c(0,1),c(5,1),c(0,0.1),c(4,4))
 norm_samples = lapply(n_params,function(x) rnorm(n,mean=x[1], sd=sqrt(x[2])))
 
