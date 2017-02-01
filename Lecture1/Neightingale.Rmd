@@ -12,7 +12,12 @@ output: html_document
 
 During the Crimean War, at the urging of nurse Florence Nightingale, the British Army introduced sanitation officers to reduce preventable deaths in hospitals. In this document I explore the effectiveness of these sanitation officers. 
 
-Nightingale worked in British Army field hospitals during the Crimean War. She was shocked by the large number of preventable deaths among British soldiers in hospitals during the first year of the war. In fact, preventable deaths far exceeded the rate of death from combat injuries. At the urging of Nightingale, the British Parliament compelled the Army to introduce sanitation officers in March of 1856. The sanitation officers enforced sanitary practices in the Army hospitals with the goal of reducing preventable deaths.  
+Nightingale worked in British Army field hospitals during the Crimean War. She was shocked by the large number of preventable deaths among British soldiers in hospitals during the first year of the war. In fact, preventable deaths far exceeded the rate of death from combat injuries. At the urging of Nightingale, the British Parliament compelled the Army to introduce sanitation officers in March of 1856. The sanitation officers enforced sanitary practices in the Army hospitals with the goal of reducing preventable deaths. 
+
+![**Florance Nightingale** ca. 1858](Nightingale_Portrate.jpg)
+
+
+Nightingale's analysis led to other innovations. Isambard Kingdom Brunel, the fammous British engineer, developed designs for portable military hospitals. These hospitals included features intended to improve patient care. Thus, Nightingales work as a data scientist reached beyond her profession of nursing. 
 
 Nightingale used some innovative graphical methods to present the results from the data she had collected on the causes of deaths of British soldiers. In this report, I explore how modern analysis methods can be applied to this 160 year old data set. 
 
@@ -32,7 +37,7 @@ Analysis of these data, support Nightingale's conclusion that introducing Sanita
 
 Like all good data scientists, Florance Nightingale used visualization to both explore her data set and to present the results of her analysis to a skeptical British public and Parlament. Here is an image of the original graphic which Nightingale used to convince the British Parlament of the effectiveness of Sanitation Officers.
 
-![Original Nightingale Grapic](C:\Users\StevePC2\Dropbox\UW\DataSci350\Summer 2016\Lecture 1\Nightingale-graphic.jpg)
+![Original Nightingale Graphic](C:\Users\StevePC2\Dropbox\UW\DataSci350\Summer 2016\Lecture 1\Nightingale-graphic.jpg)
 
 This graphic is remarkable both for the amount of information displayed and considering the state of analytics in the 1850's. In our era we have many more tools at our disposal that Florance Nightingale could not have imagined. Let's have a look at what we can do with these tools.
 
@@ -309,3 +314,5 @@ You can see from the plot of bootstrapped mean difference that it is nearly at t
 ## Conclusion
 
 This analysis supports Nightingale's original conjecture that introduction of Sanitation Officers significantly reduced the rate of death amoung soldier from preventable causes. Using several methods it is shown that  the introduction Sanitation Officers significantly reduced the rate of preventable deaths, primarily from disease. The rate of death from other causes was also significantly reduced after March 1855. Intoducton of Sanitation Officers had no effect on combat death rates. 
+
+#### Copyright 2017, Stephen F Elston. All rights reserved.
