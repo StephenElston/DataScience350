@@ -55,7 +55,9 @@ for(i in c(3, 5, 9, 17)){
 ## Want to classify people into high/low income
 ##
 ## Load the dataset
-Income = read.csv('Adult Census Income Binary Classification dataset.csv',
+path = 'C:\\Users\\StevePC2\\Documents\\Git\\DataScience350\\Lecture9' # SET YOUR PATH HERE!!
+full.path = file.path(path, 'Adult Census Income Binary Classification dataset.csv')
+Income = read.csv(full.path,
                   header = TRUE)
 
 require(e1071)

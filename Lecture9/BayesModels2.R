@@ -176,7 +176,9 @@ y <- x + epsilon
 
 
 ## Run the jags model
-jags.mod.reg <- jags.model('example.bug',
+path = 'C:\\Users\\StevePC2\\Documents\\Git\\DataScience350\\Lecture9' # SET YOUR PATH HERE!!
+full.path = file.path(path, 'example.bug')
+jags.mod.reg <- jags.model(full.path,
                    data = list('x' = x,
                                'y' = y,
                                'N' = N),
