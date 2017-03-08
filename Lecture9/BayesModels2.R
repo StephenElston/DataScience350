@@ -39,7 +39,7 @@ mycontour(betabinexch, c(-1.5, -0.5, 2, 12),
           xlab="Logit ETA", ylab="Log K")
 with(mcmc.fit, points(par))
 
-## Build a table of the results
+## Build a table of the results for each player
 eta <- with(mcmc.fit, exp(par[, 1]) / (1 + exp(par[, 1])))
 eta[1:20]
 K <- exp(mcmc.fit$par[, 2])
@@ -204,7 +204,7 @@ autocorr.plot(samples)
 effectiveSize(samples) 
 rejectionRate(samples)
 
-## Look at conversion of the parameter estimates
+
 
 
 
