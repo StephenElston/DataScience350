@@ -2,128 +2,8 @@
 ##
 ## Class: PCE 350 Data Science Methods Class
 ##
-##---- Introduction to Bayesian models and MCMC ----
+##---- Introduction to Bayesian models with MCMC ----
 ##
-
-## -----------------------------------------
-## --- Explore the Beta distribution ---
-# Beta depends on two parameters, alpha and beta
-alpha = c(0.5,1,2,3,4)
-beta = alpha
-x = seq(0.001,0.999,length=100)
-
-par(mfrow = c(5,5), mar=c(2,1,2,1)) # mar = c(bottom, left, top, right)
-sapply(alpha, function(a){
-  sapply(beta, function(b){
-    plot_title = paste("(a,b)=(",a,",",b,")")
-    plot(x,dbeta(x,a,b),xlab="",ylab="",
-         main=plot_title, type="l", lwd=2)
-  })
-})
-
-# Set plot options back to normal
-par(mar=c(5.1,4.1,4.1,2.1), mfrow=c(1,1))
-
-
-## --------------------------------------------------
-## --- Explore Simple Binary Bayesian Analysis ----
-##
-library(LearnBayes)
-## I think the chance of rain is 0.2 with
-## with a probability at the 75% point of 0.28
-## Compute my Beta prior
-beta.par <- beta.select(list(p=0.5, x=0.2), list(p=0.75, x=.28))
-beta.par ## The parameters of my Beta distribution
-
-## But there 6 sunny days and 4 rain days in the next 10 days
-## And another 6 sunny days and 4 rain days in the following 10 days
-## And another 12 sunny days and 8 rain days in the following 20 days
-## And another 12 sunny days and 8 rain days in the following 20 days
-## What does my posterior look like?
-## 
-par(mfrow = c(4,1))
-beta.par + c(6, 4)
-triplot(beta.par, c(6, 4))
-beta.par + c(6 + 6, 4 + 4)
-triplot(beta.par, c(6 + 6, 4 + 4))
-beta.par + c(6 + 6 + 12, 4 + 4 + 8)
-triplot(beta.par, c(6 + 6 + 12, 4 + 4 + 8))
-beta.par + c(6 + 6 + 12 + 12, 4 + 4 + 8 +8)
-triplot(beta.par, c(6 + 6 + 12 + 12, 4 + 4 + 8 + 8))
-par(mfrow = c(1,1))
-
-
-## Simulate from the posterior and 
-## compute confidence intervals
-beta.post.par <- beta.par + c(6 + 6 + 12 + 12, 4 + 4 + 8 + 8)
-post.sample <- rbeta(10000, beta.post.par[1], beta.post.par[2])
-par(mfrow = c(1,2))
-quants = quantile(post.sample, c(0.05, 0.95))
-breaks = seq(min(post.sample), max(post.sample), length.out = 41)
-hist(post.sample, breaks = breaks, 
-     main = 'Distribution of samples \n with 90% HDI',
-     xlab = 'Sample value',
-     ylab = 'Density')
-abline(v = quants[1], lty = 3, col = 'red', lwd = 3)
-abline(v = quants[2], lty = 3, col = 'red', lwd = 3)
-qqnorm(post.sample)
-par(mfrow = c(1,1))
-quants
-
-## Check on the model
-predplot(beta.par, 6 + 8 + 12 + 12, 4 + 2 + 8 + 8)
-
-## What is the probability of observing 0-8 successes in the
-## next 60 trials?
-n <- 60
-s <- 0:n
-pred.probs <- pbetap(beta.par, n, s)
-plot(s, pred.probs, type="h", 
-     main = 'Probability distribution of success in trail',
-     xlab = 'Successes')
-discint(cbind(s, pred.probs), 0.90)
-
-
-
-## ------------------------------------------
-##--- Discrete priors ------ 
-#
-# Create a uniform prior
-p <- seq(0, 1, by = 0.01)
-prior <- 1 / 101 + 0 * p
-
-## With 20 successes and 12 failures find posterior
-library(LearnBayes)
-tries = c(20, 12)
-post <- pdisc(p, prior, tries)
-HCI = discint(cbind(p, post), 0.90) # 90 percent HCI
-
-## Plot the prior and posterior
-par(mfrow = c(2,1))
-plot(p, prior, type="h",main="Posterior Distribution")
-Main = paste("Posterior Distribution with N =",
-             as.character(sum(tries)), 'Z =',
-             as.character(tries[1]),
-             'mu = ',
-             as.character(tries[1]/sum(tries)))
-plot(p, post, type="h",main=Main)
-abline(v = HCI$set[1], lty = 3, col = 'red', lwd = 3)
-abline(v = HCI$set[length(HCI$set)], , lty = 3, col = 'red', lwd = 3)
-abline(v = tries[1]/sum(tries), col = 'red', lwd = 3)
-par(mfrow = c(1,1))
-
-## Print the 90 percent HCI 
-HCI
-
-## Make a prediction for the distribution of the 
-## next 20 observations
-n <- 20
-s <- 0:20
-pred.probs <- pdiscp(p, post, n, s)
-plot(s, pred.probs, type="h",
-     main="Predictive Distribution")
-
-
 
 
 ## ---------------------------------------------------
@@ -194,9 +74,9 @@ plot(x_chain[num_burnin:chain_length], y_chain[num_burnin:chain_length],
      col=rgb(0,0,0,0.25), xlim=c(-4,4), ylim=c(-4,4),
      main="MCMC values for a Bivariate Normal with burn-in", xlab="x", ylab="y")
 
-# Estimate bivariate mean from chain:
-mcmc_mean = c(mean(x_chain), mean(y_chain))
-mcmc_mean
+# Estimate bivariate MAP from chain:
+mcmc_map = c(mean(x_chain), mean(y_chain))
+mcmc_map
 
 # Acceptance/Reject rate:
 accept_count/chain_length
