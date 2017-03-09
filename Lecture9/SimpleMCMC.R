@@ -121,6 +121,7 @@ minmaxpost <- function(theta, data){
 
 # Some data and compute the posterior using the Laplace method
 data <- list(n=10, min=52, max=84)
+data
 fit <- laplace(minmaxpost, c(70, 2), data)
 fit
 

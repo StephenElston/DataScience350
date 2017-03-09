@@ -7,6 +7,7 @@
 ## Load the data
 require(mlbench)
 data(HouseVotes84)
+head(HouseVotes84)
 
 ## Examine the data ste
 require(ggplot2)
