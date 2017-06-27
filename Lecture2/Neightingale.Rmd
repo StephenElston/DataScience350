@@ -24,6 +24,9 @@ Nightingale used some innovative graphical methods to present the results from t
 
 Analysis of these data, support Nightingale's conclusion that introducing Sanitation Officers did, in fact, reduce preventable deaths and from disease and other causes. At the 95% confidence level we can reject the null hypothesis that Sanitation Officers had no effect on the rate of preventable deaths. We can seee this resutl both from clasical t-tests and bootstrap tests. However, we cannot reject the hypothesis that combat deaths from wounds decreased following the introduction of Sanitation Officers, it is likely that the rate of combat deaths did not change. 
 
+You can find more information on Florance Nightingale in 
+Eileen Magnello's blog post, [Florence Nightingale: The compassionate statistician](https://plus.maths.org/content/florence-nightingale-compassionate-statistician).
+
 **NOTE:** In order to run this file from source you need to ensure the following R packages are innstalled:
 
 - HistData
