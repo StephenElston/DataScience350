@@ -19,7 +19,7 @@ plot(random_points[,1], random_points[,2], xlim=c(-4,4), ylim=c(-4,4), col=rgb(0
 
 # Given a point, our value at that point(x,y) will be the 
 # value of the distribution at x,y:
-likelihood = function(x,y){
+likelihood = functioln(x,y){
   sigma = matrix(c(1,0.6,0.6,1), nrow=2)
   mu = c(0.5,0.5)
   dist = c(x,y) - mu
